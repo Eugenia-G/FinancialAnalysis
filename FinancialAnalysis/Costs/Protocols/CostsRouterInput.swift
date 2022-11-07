@@ -8,5 +8,5 @@
 import UIKit
 
 protocol CostsRouterInput{
-    func showAddCostsCategoryFlow(navController: UINavigationController)
+    func showAddFlow(navController: UINavigationController, type: AddType)
 }

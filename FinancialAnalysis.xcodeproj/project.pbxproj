@@ -28,6 +28,8 @@
 		6235A3552916A05F00717C28 /* AddPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235A3542916A05F00717C28 /* AddPresenterInput.swift */; };
 		6235A3572916A07200717C28 /* AddPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235A3562916A07200717C28 /* AddPresenterOutput.swift */; };
 		6235A35B2916AA0800717C28 /* AddRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235A35A2916AA0800717C28 /* AddRouter.swift */; };
+		6247858D29199D82004A74DA /* AddType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6247858C29199D82004A74DA /* AddType.swift */; };
+		6247858F29199EC6004A74DA /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6247858E29199EC6004A74DA /* Income.swift */; };
 		6260739728F1D36A00545484 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6260739628F1D36A00545484 /* AppDelegate.swift */; };
 		6260739E28F1D36A00545484 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6260739C28F1D36A00545484 /* Main.storyboard */; };
 		626073A128F1D36A00545484 /* FinancialAnalysis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6260739F28F1D36A00545484 /* FinancialAnalysis.xcdatamodeld */; };
@@ -81,6 +83,8 @@
 		6235A3542916A05F00717C28 /* AddPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresenterInput.swift; sourceTree = "<group>"; };
 		6235A3562916A07200717C28 /* AddPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresenterOutput.swift; sourceTree = "<group>"; };
 		6235A35A2916AA0800717C28 /* AddRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddRouter.swift; path = ../../../../../.Trash/AddRouter.swift; sourceTree = "<group>"; };
+		6247858C29199D82004A74DA /* AddType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddType.swift; sourceTree = "<group>"; };
+		6247858E29199EC6004A74DA /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
 		6260739328F1D36A00545484 /* FinancialAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinancialAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6260739628F1D36A00545484 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6260739D28F1D36A00545484 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				6235A33929168A5C00717C28 /* CostsCategories.swift */,
+				6247858E29199EC6004A74DA /* Income.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -162,6 +167,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		6247858B29199D69004A74DA /* SupportElements */ = {
+			isa = PBXGroup;
+			children = (
+				6247858C29199D82004A74DA /* AddType.swift */,
+			);
+			path = SupportElements;
+			sourceTree = "<group>";
+		};
 		6260738A28F1D36A00545484 = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +199,7 @@
 		6260739528F1D36A00545484 /* FinancialAnalysis */ = {
 			isa = PBXGroup;
 			children = (
+				6247858B29199D69004A74DA /* SupportElements */,
 				6235A33829168A2300717C28 /* DataBase */,
 				626073E428F1E0A900545484 /* CustomElements */,
 				62D013F028F2D60E00517266 /* TextFieldForAdd */,
@@ -418,7 +432,9 @@
 				62007406291294D300B22D0C /* CostsInteractor.swift in Sources */,
 				6235A3532916A04500717C28 /* AddInteractorOutput.swift in Sources */,
 				626073E628F1E0C400545484 /* NavigationController.swift in Sources */,
+				6247858D29199D82004A74DA /* AddType.swift in Sources */,
 				6235A34F2916A01C00717C28 /* AddRouterOutput.swift in Sources */,
+				6247858F29199EC6004A74DA /* Income.swift in Sources */,
 				62D013EF28F2D3CC00517266 /* AddViewController.swift in Sources */,
 				6235A35B2916AA0800717C28 /* AddRouter.swift in Sources */,
 				6235A33A29168A5C00717C28 /* CostsCategories.swift in Sources */,

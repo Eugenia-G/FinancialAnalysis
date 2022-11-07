@@ -21,10 +21,17 @@ final class AddViewController: UIViewController {
         super.viewDidLoad()
         categoryTextField.becomeFirstResponder()
         setupUI()
+        
+        categoryTextField.placeholder = presenter?.addType.textFieldPlaceholder
+        addButton.setTitle(presenter?.addType.buttonTitle, for: .normal)
     }
     
     func getCategory() -> String {
         return categoryTextField.text ?? ""
+    }
+    
+    func getIncome() -> Double {
+        return NumberFormatter().number(from: categoryTextField.text ?? "0")?.doubleValue ?? 0
     }
 }
 
@@ -44,7 +51,6 @@ private extension AddViewController {
         
         addView.addSubview(categoryTextField)
         categoryTextField.backgroundColor = .white
-        categoryTextField.placeholder = "Наименование"
         categoryTextField.clearButtonMode = .always
         categoryTextField.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview().inset(16)
@@ -61,7 +67,6 @@ private extension AddViewController {
         
         addView.addSubview(addButton)
         addButton.backgroundColor = .blue
-        addButton.setTitle("Добавить", for: .normal)
         addButton.layer.cornerRadius = 24
         addButton.addTarget(self, action: #selector(addCategoryButtonClick), for: .touchUpInside)
         addButton.snp.makeConstraints { make in

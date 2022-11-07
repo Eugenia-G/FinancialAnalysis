@@ -9,7 +9,8 @@ import UIKit
 
 protocol CostsPresenterInput {
     func start()
-    func addCostsCategory(navController: UINavigationController)
+    func add(navController: UINavigationController, type: AddType)
     func getCategories() -> [String]
+    func getIncome() -> Double
     func deleteCategory(at index: Int)
 }

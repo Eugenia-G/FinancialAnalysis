@@ -20,6 +20,11 @@ class CostsInteractor: CostsInteractorInput {
         return categories
     }
     
+    func getIncome() -> Double {
+        let lastIncome = Array(realm.objects(Income.self)).last?.income ?? 0
+        return lastIncome
+    }
+    
     func deleteCategory(at index : Int) {
         self.realm.beginWrite()
         self.realm.delete(Array(realm.objects(CostsCategories.self))[index])

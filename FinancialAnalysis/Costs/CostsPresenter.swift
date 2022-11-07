@@ -26,8 +26,12 @@ class CostsPresenter: CostsPresenterInput {
         return interactor?.getCategories() ?? []
     }
     
-    func addCostsCategory(navController: UINavigationController) {
-        router?.showAddCostsCategoryFlow(navController: navController)
+    func getIncome() -> Double {
+        return interactor?.getIncome() ?? 0
+    }
+    
+    func add(navController: UINavigationController, type: AddType) {
+        router?.showAddFlow(navController: navController, type: type)
     }
     
     func deleteCategory(at index: Int) {

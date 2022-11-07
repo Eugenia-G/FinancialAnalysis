@@ -11,9 +11,9 @@ import UIKit
 class CostsRouter: CostsRouterInput{
     weak var viewController: CostsViewController?
     
-    func showAddCostsCategoryFlow(navController: UINavigationController) {
+    func showAddFlow(navController: UINavigationController, type: AddType) {
         let interator = AddInteractor()
-        let presenter = AddPresenter()
+        let presenter = AddPresenter(addType: type)
         let view = AddViewController()
         let router = AddRouter()
 

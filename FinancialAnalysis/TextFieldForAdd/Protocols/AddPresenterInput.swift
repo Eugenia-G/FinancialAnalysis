@@ -8,5 +8,7 @@
 import Foundation
 
 protocol AddPresenterInput {
+    var addType: AddType { get }
+    
     func addButtonClick()
 }

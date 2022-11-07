@@ -21,7 +21,9 @@ final class CostsViewController: UIViewController, UITextFieldDelegate {
     private var category: [String] {
         presenter?.getCategories() ?? []
     }
-    private var balance = 50000.45
+    private var balance: Double {
+        presenter?.getIncome() ?? 0
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +42,20 @@ final class CostsViewController: UIViewController, UITextFieldDelegate {
             selector: #selector(updateTable),
             name: NSNotification.Name(rawValue: "categoryAdd"),
             object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateIncome),
+            name: NSNotification.Name(rawValue: "incomeAdd"),
+            object: nil)
     }
     
     @objc func updateTable() {
         tableView.reloadData()
+    }
+    
+    @objc func updateIncome() {
+        incomeInfoLabel.text = "\(balance) ₽"
     }
 
 }
@@ -63,7 +75,7 @@ private extension CostsViewController {
             make.left.equalToSuperview().inset(16)
         }
         
-        incomeInfoLabel.text = String(balance) + " ₽"
+        incomeInfoLabel.text = "\(balance) ₽"
         incomeInfoLabel.font = UIFont(name: "Arial", size: 16)
         incomeInfoLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(100)
@@ -102,10 +114,11 @@ private extension CostsViewController {
     }
     
     @objc func addCategoryButtonClick() {
-        presenter?.addCostsCategory(navController: navigationController!)
+        presenter?.add(navController: navigationController!, type: .category)
     }
     
     @objc func addIncomeButtonClick() {
+        presenter?.add(navController: navigationController!, type: .income)
     }
 }
 

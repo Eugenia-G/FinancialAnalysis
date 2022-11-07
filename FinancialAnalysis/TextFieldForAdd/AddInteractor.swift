@@ -18,4 +18,13 @@ class AddInteractor: AddInteractorInput {
             realm.add(costsCategories)
         }
     }
+    
+    func addIncome(_ inc: Double) {
+        try! realm.write{
+            let lastIncome = Array(realm.objects(Income.self)).last?.income
+            let income = Income()
+            income.income = (lastIncome ?? 0) + inc
+            realm.add(income)
+        }
+    }
 }
