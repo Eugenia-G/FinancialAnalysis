@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//import  RealmSwift
 
 class CostsPresenter: CostsPresenterInput {
     var router: CostsRouterInput?
@@ -14,10 +13,6 @@ class CostsPresenter: CostsPresenterInput {
     var view: CostsViewController?
     
     func start() {
-//        let realm = try! Realm()
-//        try! realm.write {
-//          realm.deleteAll()
-//        }
         
         view?.updateTable()
     }
@@ -34,7 +29,11 @@ class CostsPresenter: CostsPresenterInput {
         router?.showAddFlow(navController: navController, type: type)
     }
     
-    func deleteCategory(at index: Int) {
-        interactor?.deleteCategory(at: index)
+    func deleteCategory(at index: Int, for category: String) {
+        interactor?.deleteCategory(at: index, for: category)
+    }
+    
+    func openCostsCategory(navController: UINavigationController, category: String) {
+        router?.showCostsCategoryFlow(navController: navController, category: category)
     }
 }

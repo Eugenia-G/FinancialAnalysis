@@ -12,5 +12,6 @@ protocol CostsPresenterInput {
     func add(navController: UINavigationController, type: AddType)
     func getCategories() -> [String]
     func getIncome() -> Double
-    func deleteCategory(at index: Int)
+    func deleteCategory(at index: Int, for category: String)
+    func openCostsCategory(navController: UINavigationController, category: String)
 }

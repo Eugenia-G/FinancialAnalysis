@@ -1,47 +1,58 @@
 //
-//  CostsViewController.swift
+//  CostsCategoryViewController.swift
 //  FinancialAnalysis
 //
-//  Created by Евгения Головкина on 08.10.2022.
+//  Created by Евгения Головкина on 27.11.2022.
 //
 
-import UIKit
-import SnapKit
 import Foundation
+import UIKit
 
-final class CostsViewController: UIViewController, UITextFieldDelegate {
-    public var presenter: CostsPresenterInput?
+final class CostsCategoryViewController: UIViewController {
+    
+    public var presenter: CostsCategoryPresenterInput?
     
     private let tableView = UITableView()
-    private let addCategoryButton = UIButton()
+    private let addCostButton = UIButton()
     private let incomeLabel = UILabel()
     private let incomeInfoLabel = UILabel()
     private let addIncomeButton = UIButton()
     
-    private var category: [String] {
-        presenter?.getCategories() ?? []
-    }
     private var balance: Double {
         presenter?.getIncome() ?? 0
     }
-
+    
+    private var costs: [CostsCategory] {
+        presenter?.getCostsCategory() ?? []
+    }
+    
+    private var costsKeys: [String] {
+        self.costs.map({$0.costsName})
+    }
+    private var costsName: [String] {
+        self.costs.map({$0.costsNumber})
+    }
+    private var costsDate: [String] {
+        self.costs.map({$0.costsDate})
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
-        navigationItem.setTitle(title: "Расходы", subtitle: "")
-        navigationItem.backButtonTitle = ""
+        navigationItem.setTitle(title: presenter?.category ?? "", subtitle: "")
         
         tableView.dataSource = self
         tableView.delegate = self
         
         setupUI()
-        
         presenter?.start()
+        
         
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateTable),
-            name: NSNotification.Name(rawValue: "categoryAdd"),
+            name: NSNotification.Name(rawValue: "costAdd"),
             object: nil)
         
         NotificationCenter.default.addObserver(
@@ -49,6 +60,7 @@ final class CostsViewController: UIViewController, UITextFieldDelegate {
             selector: #selector(updateIncome),
             name: NSNotification.Name(rawValue: "incomeAdd"),
             object: nil)
+        
     }
     
     @objc func updateTable() {
@@ -58,13 +70,13 @@ final class CostsViewController: UIViewController, UITextFieldDelegate {
     @objc func updateIncome() {
         incomeInfoLabel.text = "\(balance) ₽"
     }
-
+        
 }
 
-private extension CostsViewController {
+private extension CostsCategoryViewController {
     func setupUI() {
         view.addSubview(tableView)
-        view.addSubview(addCategoryButton)
+        view.addSubview(addCostButton)
         view.addSubview(incomeLabel)
         view.addSubview(incomeInfoLabel)
         view.addSubview(addIncomeButton)
@@ -93,13 +105,13 @@ private extension CostsViewController {
             make.right.equalToSuperview().inset(10)
         }
         
-        addCategoryButton.setTitle("Добавить категорию расходов", for: .normal)
-        addCategoryButton.layer.cornerRadius = 24
-        addCategoryButton.backgroundColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
-        addCategoryButton.tintColor = .white
-        addCategoryButton.addTarget(self, action: #selector(addCategoryButtonClick), for: .touchUpInside)
+        addCostButton.setTitle("Добавить расход", for: .normal)
+        addCostButton.layer.cornerRadius = 24
+        addCostButton.backgroundColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
+        addCostButton.tintColor = .white
+        addCostButton.addTarget(self, action: #selector(addCostButtonClick), for: .touchUpInside)
         
-        addCategoryButton.snp.makeConstraints { make in
+        addCostButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(145)
             make.left.right.equalToSuperview().inset(16)
             make.height.equalTo(48)
@@ -108,14 +120,14 @@ private extension CostsViewController {
         tableView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(150)
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(addCategoryButton).inset(50)
+            make.bottom.equalTo(addCostButton).inset(50)
         }
         
-        tableView.register(CostsTableCell.self, forCellReuseIdentifier: "CostsTableCell")
+        tableView.register(CostsCategoryTableCell.self, forCellReuseIdentifier: "CostsCategoryTableCell")
     }
     
-    @objc func addCategoryButtonClick() {
-        presenter?.add(navController: navigationController!, type: .category)
+    @objc func addCostButtonClick() {
+        presenter?.add(navController: navigationController!, type: .cost)
     }
     
     @objc func addIncomeButtonClick() {
@@ -123,43 +135,68 @@ private extension CostsViewController {
     }
 }
 
-extension CostsViewController: UITableViewDataSource, UITableViewDelegate {
+extension CostsCategoryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        category.count
+        costsKeys.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "CostsTableCell", for: indexPath) as! CostsTableCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "CostsCategoryTableCell", for: indexPath) as! CostsCategoryTableCell
+        
+        cell.accessoryType = .none
+        cell.isUserInteractionEnabled = false
         
         cell.contentView.addSubview(cell.nameLabel)
-        cell.nameLabel.text = category[indexPath.row]
+        cell.nameLabel.text = costsKeys[indexPath.row]
         cell.nameLabel.numberOfLines = 0
         cell.nameLabel.font = UIFont(name: "SFProDisplay-Medium", size: 16)
         cell.nameLabel.textColor = .black
-        cell.accessoryType = .disclosureIndicator
+        cell.nameLabel.textAlignment = .left
         
         cell.nameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(cell.contentView.snp.top).offset(24)
             make.left.equalTo(cell.contentView.snp.left).offset(16)
-            make.right.equalTo(cell.contentView.snp.right).offset(-55)
             make.bottom.equalTo(cell.contentView.snp.bottom).offset(-24)
-        }
+            make.width.equalTo((cell.contentView.bounds.width - 32) / 3)
+            }
+        
+        cell.contentView.addSubview(cell.dateLabel)
+        cell.dateLabel.text = costsDate[indexPath.row]
+        cell.dateLabel.numberOfLines = 0
+        cell.dateLabel.font = UIFont(name: "SFProDisplay-Medium", size: 16)
+        cell.dateLabel.textColor = .black
+        cell.dateLabel.textAlignment = .center
+        
+        cell.dateLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView.snp.top).offset(24)
+            make.left.equalTo(cell.nameLabel.snp.right)
+            make.width.equalTo(cell.contentView.bounds.width / 3)
+            make.bottom.equalTo(cell.contentView.snp.bottom).offset(-24)
+            }
+        
+        cell.contentView.addSubview(cell.costLabel)
+        cell.costLabel.text = costsName[indexPath.row]
+        cell.costLabel.numberOfLines = 0
+        cell.costLabel.font = UIFont(name: "SFProDisplay-Medium", size: 16)
+        cell.costLabel.textColor = .black
+        cell.costLabel.textAlignment = .right
+        
+        cell.costLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(cell.contentView.snp.top).offset(24)
+            make.left.equalTo(cell.dateLabel.snp.right)
+            make.right.equalTo(cell.contentView.snp.right).inset(16)
+            make.width.equalTo((cell.contentView.bounds.width - 32) / 3)
+            make.bottom.equalTo(cell.contentView.snp.bottom).offset(-24)
+            }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            presenter?.deleteCategory(at: indexPath.row, for: category[indexPath.row])
+            presenter?.deleteCost(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.reloadData()
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.openCostsCategory(navController: navigationController!, category: category[indexPath.row])
-        UIView.animate(withDuration: 0.2,  animations: {
-            tableView.cellForRow(at: indexPath)?.selectionStyle = .none
-        })
     }
 }

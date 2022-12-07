@@ -10,4 +10,5 @@ import Foundation
 protocol AddInteractorInput {
     func addCategory(_ category: String)
     func addIncome(_ inc: Double)
+    func addCostsCategory(category: String, name: String, number: String)
 }

@@ -43,7 +43,20 @@
 		626073E628F1E0C400545484 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626073E528F1E0C400545484 /* NavigationController.swift */; };
 		626073EC28F1E67C00545484 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 626073EB28F1E67C00545484 /* SnapKit */; };
 		626073EE28F1E90200545484 /* CostsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626073ED28F1E90200545484 /* CostsTableCell.swift */; };
+		626449FA294129CD004212B3 /* ConvertDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626449F9294129CD004212B3 /* ConvertDate.swift */; };
 		62D013EF28F2D3CC00517266 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D013EE28F2D3CC00517266 /* AddViewController.swift */; };
+		62FCFF902933F4D4007E0C6D /* CostsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFF8F2933F4D4007E0C6D /* CostsCategory.swift */; };
+		62FCFF932933F5CF007E0C6D /* CostsCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFF922933F5CF007E0C6D /* CostsCategoryViewController.swift */; };
+		62FCFF952933F5DB007E0C6D /* CostsCategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFF942933F5DB007E0C6D /* CostsCategoryPresenter.swift */; };
+		62FCFF972933F5E7007E0C6D /* CostsCategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFF962933F5E7007E0C6D /* CostsCategoryInteractor.swift */; };
+		62FCFF992933F5F0007E0C6D /* CostsCategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFF982933F5F0007E0C6D /* CostsCategoryRouter.swift */; };
+		62FCFF9C2933F614007E0C6D /* CostsCategoryRouretInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFF9B2933F614007E0C6D /* CostsCategoryRouretInput.swift */; };
+		62FCFF9E2933F61F007E0C6D /* CostsCategoryRouterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFF9D2933F61F007E0C6D /* CostsCategoryRouterOutput.swift */; };
+		62FCFFA02933F62A007E0C6D /* CostsCategoryPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFF9F2933F62A007E0C6D /* CostsCategoryPresenterInput.swift */; };
+		62FCFFA22933F633007E0C6D /* CostsCategoryPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFFA12933F633007E0C6D /* CostsCategoryPresenterOutput.swift */; };
+		62FCFFA42933F642007E0C6D /* CostsCategoryInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFFA32933F642007E0C6D /* CostsCategoryInteractorInput.swift */; };
+		62FCFFA62933F650007E0C6D /* CostsCategoryInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFFA52933F650007E0C6D /* CostsCategoryInteractorOutput.swift */; };
+		62FCFFA82933F89B007E0C6D /* CostsCategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFFA72933F89B007E0C6D /* CostsCategoryTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +114,20 @@
 		626073D428F1D9BD00545484 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		626073E528F1E0C400545484 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		626073ED28F1E90200545484 /* CostsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsTableCell.swift; sourceTree = "<group>"; };
+		626449F9294129CD004212B3 /* ConvertDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertDate.swift; sourceTree = "<group>"; };
 		62D013EE28F2D3CC00517266 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		62FCFF8F2933F4D4007E0C6D /* CostsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategory.swift; sourceTree = "<group>"; };
+		62FCFF922933F5CF007E0C6D /* CostsCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryViewController.swift; sourceTree = "<group>"; };
+		62FCFF942933F5DB007E0C6D /* CostsCategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryPresenter.swift; sourceTree = "<group>"; };
+		62FCFF962933F5E7007E0C6D /* CostsCategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryInteractor.swift; sourceTree = "<group>"; };
+		62FCFF982933F5F0007E0C6D /* CostsCategoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryRouter.swift; sourceTree = "<group>"; };
+		62FCFF9B2933F614007E0C6D /* CostsCategoryRouretInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryRouretInput.swift; sourceTree = "<group>"; };
+		62FCFF9D2933F61F007E0C6D /* CostsCategoryRouterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryRouterOutput.swift; sourceTree = "<group>"; };
+		62FCFF9F2933F62A007E0C6D /* CostsCategoryPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryPresenterInput.swift; sourceTree = "<group>"; };
+		62FCFFA12933F633007E0C6D /* CostsCategoryPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryPresenterOutput.swift; sourceTree = "<group>"; };
+		62FCFFA32933F642007E0C6D /* CostsCategoryInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryInteractorInput.swift; sourceTree = "<group>"; };
+		62FCFFA52933F650007E0C6D /* CostsCategoryInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryInteractorOutput.swift; sourceTree = "<group>"; };
+		62FCFFA72933F89B007E0C6D /* CostsCategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +163,7 @@
 			children = (
 				6235A33929168A5C00717C28 /* CostsCategories.swift */,
 				6247858E29199EC6004A74DA /* Income.swift */,
+				62FCFF8F2933F4D4007E0C6D /* CostsCategory.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -171,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				6247858C29199D82004A74DA /* AddType.swift */,
+				626449F9294129CD004212B3 /* ConvertDate.swift */,
 			);
 			path = SupportElements;
 			sourceTree = "<group>";
@@ -202,6 +230,7 @@
 				6247858B29199D69004A74DA /* SupportElements */,
 				6235A33829168A2300717C28 /* DataBase */,
 				626073E428F1E0A900545484 /* CustomElements */,
+				62FCFF912933F5B8007E0C6D /* CostsCategory */,
 				62D013F028F2D60E00517266 /* TextFieldForAdd */,
 				626073CA28F1D97800545484 /* Graph */,
 				626073C928F1D95D00545484 /* Costs */,
@@ -278,6 +307,32 @@
 				6235A35A2916AA0800717C28 /* AddRouter.swift */,
 			);
 			path = TextFieldForAdd;
+			sourceTree = "<group>";
+		};
+		62FCFF912933F5B8007E0C6D /* CostsCategory */ = {
+			isa = PBXGroup;
+			children = (
+				62FCFF9A2933F5F9007E0C6D /* Protocols */,
+				62FCFF922933F5CF007E0C6D /* CostsCategoryViewController.swift */,
+				62FCFF942933F5DB007E0C6D /* CostsCategoryPresenter.swift */,
+				62FCFF962933F5E7007E0C6D /* CostsCategoryInteractor.swift */,
+				62FCFF982933F5F0007E0C6D /* CostsCategoryRouter.swift */,
+				62FCFFA72933F89B007E0C6D /* CostsCategoryTableCell.swift */,
+			);
+			path = CostsCategory;
+			sourceTree = "<group>";
+		};
+		62FCFF9A2933F5F9007E0C6D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				62FCFF9B2933F614007E0C6D /* CostsCategoryRouretInput.swift */,
+				62FCFF9D2933F61F007E0C6D /* CostsCategoryRouterOutput.swift */,
+				62FCFF9F2933F62A007E0C6D /* CostsCategoryPresenterInput.swift */,
+				62FCFFA12933F633007E0C6D /* CostsCategoryPresenterOutput.swift */,
+				62FCFFA32933F642007E0C6D /* CostsCategoryInteractorInput.swift */,
+				62FCFFA52933F650007E0C6D /* CostsCategoryInteractorOutput.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,8 +480,11 @@
 				6235A34229169F2D00717C28 /* CostsInteractorInput.swift in Sources */,
 				6235A34029169F0E00717C28 /* CostsRouterOutput.swift in Sources */,
 				6235A34829169F7900717C28 /* CostsPresenterOutput.swift in Sources */,
+				62FCFF932933F5CF007E0C6D /* CostsCategoryViewController.swift in Sources */,
 				6235A34629169F6200717C28 /* CostsPresenterInput.swift in Sources */,
+				62FCFFA22933F633007E0C6D /* CostsCategoryPresenterOutput.swift in Sources */,
 				626073EE28F1E90200545484 /* CostsTableCell.swift in Sources */,
+				62FCFFA82933F89B007E0C6D /* CostsCategoryTableCell.swift in Sources */,
 				6260739728F1D36A00545484 /* AppDelegate.swift in Sources */,
 				6235A34429169F4300717C28 /* CostsInteractorOutput.swift in Sources */,
 				62007406291294D300B22D0C /* CostsInteractor.swift in Sources */,
@@ -437,16 +495,26 @@
 				6247858F29199EC6004A74DA /* Income.swift in Sources */,
 				62D013EF28F2D3CC00517266 /* AddViewController.swift in Sources */,
 				6235A35B2916AA0800717C28 /* AddRouter.swift in Sources */,
+				62FCFF902933F4D4007E0C6D /* CostsCategory.swift in Sources */,
 				6235A33A29168A5C00717C28 /* CostsCategories.swift in Sources */,
 				62007404291294C600B22D0C /* CostsPresenter.swift in Sources */,
 				626073D528F1D9BD00545484 /* GraphViewController.swift in Sources */,
+				62FCFF9C2933F614007E0C6D /* CostsCategoryRouretInput.swift in Sources */,
 				6235A33E29169ED100717C28 /* CostsRouterInput.swift in Sources */,
+				62FCFF992933F5F0007E0C6D /* CostsCategoryRouter.swift in Sources */,
 				6235A3552916A05F00717C28 /* AddPresenterInput.swift in Sources */,
+				62FCFF952933F5DB007E0C6D /* CostsCategoryPresenter.swift in Sources */,
 				62007408291294DC00B22D0C /* CostsRouter.swift in Sources */,
 				620074002912934200B22D0C /* AddInteractor.swift in Sources */,
+				62FCFFA42933F642007E0C6D /* CostsCategoryInteractorInput.swift in Sources */,
+				62FCFFA62933F650007E0C6D /* CostsCategoryInteractorOutput.swift in Sources */,
 				626073A128F1D36A00545484 /* FinancialAnalysis.xcdatamodeld in Sources */,
+				626449FA294129CD004212B3 /* ConvertDate.swift in Sources */,
 				6235A34B29169FC100717C28 /* AddRouterInput.swift in Sources */,
+				62FCFF972933F5E7007E0C6D /* CostsCategoryInteractor.swift in Sources */,
 				620073FE2912933900B22D0C /* AddPresenter.swift in Sources */,
+				62FCFF9E2933F61F007E0C6D /* CostsCategoryRouterOutput.swift in Sources */,
+				62FCFFA02933F62A007E0C6D /* CostsCategoryPresenterInput.swift in Sources */,
 				626073CD28F1D99100545484 /* CostsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

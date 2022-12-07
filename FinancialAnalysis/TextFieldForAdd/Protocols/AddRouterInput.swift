@@ -11,4 +11,5 @@ protocol AddRouterInput {
     var navigationController: UINavigationController? { get }
     
     func showCostsView()
+    func showCostsCategoryView()
 }

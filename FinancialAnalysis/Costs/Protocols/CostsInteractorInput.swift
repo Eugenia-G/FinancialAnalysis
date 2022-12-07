@@ -10,5 +10,5 @@ import Foundation
 protocol CostsInteractorInput {
     func getCategories() -> [String]
     func getIncome() -> Double 
-    func deleteCategory(at index : Int)
+    func deleteCategory(at index : Int, for category: String)
 }

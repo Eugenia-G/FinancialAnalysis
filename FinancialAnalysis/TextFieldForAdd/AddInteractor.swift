@@ -27,4 +27,15 @@ class AddInteractor: AddInteractorInput {
             realm.add(income)
         }
     }
+    
+    func addCostsCategory(category: String, name: String, number: String) {
+        try! realm.write{
+            let costsCategory = CostsCategory()
+            costsCategory.costCategory.append(category)
+            costsCategory.costsName.append(name)
+            costsCategory.costsDate.append(Date().rusFormatter)
+            costsCategory.costsNumber.append(number)
+            realm.add(costsCategory)
+        }
+    }
 }

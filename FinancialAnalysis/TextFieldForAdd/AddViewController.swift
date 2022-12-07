@@ -14,6 +14,7 @@ final class AddViewController: UIViewController {
     
     private let addView = UIView()
     private let categoryTextField = UITextField()
+    private let numberTextField = UITextField()
     private let addButton = UIButton()
     private let separatorView = UIView()
     
@@ -23,6 +24,7 @@ final class AddViewController: UIViewController {
         setupUI()
         
         categoryTextField.placeholder = presenter?.addType.textFieldPlaceholder
+        numberTextField.placeholder = "Сумма"
         addButton.setTitle(presenter?.addType.buttonTitle, for: .normal)
     }
     
@@ -32,6 +34,10 @@ final class AddViewController: UIViewController {
     
     func getIncome() -> Double {
         return NumberFormatter().number(from: categoryTextField.text ?? "0")?.doubleValue ?? 0
+    }
+    
+    func getNumber() -> String{
+        return numberTextField.text  ?? ""
     }
 }
 
@@ -45,7 +51,11 @@ private extension AddViewController {
         
         addView.backgroundColor = .white
         addView.snp.makeConstraints { make in
-            make.height.equalTo(168)
+            if presenter?.addType == .cost {
+                make.height.equalTo(232)
+            } else {
+                make.height.equalTo(168)
+            }
             make.width.equalToSuperview()
         }
         
@@ -65,13 +75,28 @@ private extension AddViewController {
             make.height.equalTo(0.5)
         }
         
+        if presenter?.addType == .cost {
+            addView.addSubview(numberTextField)
+            numberTextField.backgroundColor = .white
+            numberTextField.clearButtonMode = .always
+            numberTextField.snp.makeConstraints { make in
+                make.top.equalTo(separatorView)
+                make.left.right.equalToSuperview().inset(16)
+                make.height.equalTo(64)
+            }
+        }
+        
         addView.addSubview(addButton)
         addButton.backgroundColor = .blue
         addButton.layer.cornerRadius = 24
         addButton.addTarget(self, action: #selector(addCategoryButtonClick), for: .touchUpInside)
         addButton.snp.makeConstraints { make in
             make.right.left.equalToSuperview().inset(12)
-            make.top.equalTo(categoryTextField.snp.bottom).offset(21)
+            if presenter?.addType == .cost {
+                make.top.equalTo(numberTextField.snp.bottom).offset(21)
+            } else {
+                make.top.equalTo(categoryTextField.snp.bottom).offset(21)
+            }
             make.height.equalTo(48)
         }
     }

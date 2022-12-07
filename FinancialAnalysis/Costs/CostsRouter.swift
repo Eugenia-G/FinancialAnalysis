@@ -26,4 +26,20 @@ class CostsRouter: CostsRouterInput{
         
         navController.present(view, animated: true)
     }
+    
+    func showCostsCategoryFlow(navController: UINavigationController, category: String) {
+        let interator = CostsCategoryInteractor()
+        let presenter = CostsCategoryPresenter(category: category)
+        let view = CostsCategoryViewController()
+        let router = CostsCategoryRouter()
+
+        view.presenter = presenter
+        presenter.interactor = interator
+        presenter.router = router
+        presenter.view = view
+        
+        router.navigationController = navController
+        
+        navController.show(view, sender: nil)
+    }
 }

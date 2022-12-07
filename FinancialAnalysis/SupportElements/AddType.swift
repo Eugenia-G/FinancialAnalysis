@@ -10,6 +10,7 @@ import Foundation
 public enum AddType {
     case category
     case income
+    case cost
 }
 
 extension AddType {
@@ -19,6 +20,8 @@ extension AddType {
             return "Наименование"
         case .income:
             return "Сумма"
+        case .cost:
+            return "Наименование расхода"
         }
     }
     
@@ -28,6 +31,8 @@ extension AddType {
             return "Добавить категорию расходов"
         case .income:
             return "Добавить доход"
+        case .cost:
+            return "Добавить расход"
         }
     }
 }

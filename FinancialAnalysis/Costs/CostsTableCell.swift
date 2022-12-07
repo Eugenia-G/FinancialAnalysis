@@ -12,7 +12,7 @@ import SnapKit
 
 class CostsTableCell: UITableViewCell {
     
-    let nameLabel : UILabel = UILabel()
+    let nameLabel: UILabel = UILabel()
     
 }
 
