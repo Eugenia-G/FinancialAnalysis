@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class AddInteractor: AddInteractorInput {
+    var presenter: AddInteractorOutput?
     private let realm = try! Realm()
     
     func addCategory(_ category: String) {
@@ -24,11 +25,27 @@ class AddInteractor: AddInteractorInput {
             let lastIncome = Array(realm.objects(Income.self)).last?.income
             let income = Income()
             income.income = (lastIncome ?? 0) + inc
+            income.incomeDate = Date().rusFormatter
             realm.add(income)
         }
     }
     
-    func addCostsCategory(category: String, name: String, number: String) {
+    func addCostsCategory(category: String, name: String, number: String) -> Bool {
+            let lastIncome = Array(self.realm.objects(Income.self)).last?.income
+            let income = Income()
+            income.income = (lastIncome ?? 0) - (Double(number) ?? 0)
+            if income.income >= 0 {
+                try! realm.write{
+                    realm.add(income)
+                }
+               writeCostsCategory(category: category, name: name, number: number)
+                return true
+            } else {
+                return false
+        }
+    }
+    
+    func writeCostsCategory(category: String, name: String, number: String) {
         try! realm.write{
             let costsCategory = CostsCategory()
             costsCategory.costCategory.append(category)

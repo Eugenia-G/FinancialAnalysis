@@ -12,4 +12,5 @@ protocol CostsCategoryRouterInput {
     
     func showCostsView()
     func showAddFlow(navController: UINavigationController, type: AddType, category: String)
+    func showAlert(title: String, subtitle: String?, action: [String : (UIAlertAction) -> Void])
 }

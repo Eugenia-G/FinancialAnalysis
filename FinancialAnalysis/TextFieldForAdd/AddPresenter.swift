@@ -33,9 +33,10 @@ class AddPresenter: AddPresenterInput {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "incomeAdd"), object: nil)
             router?.showCostsView()
         case .cost:
-            interactor?.addCostsCategory(category: category ?? "", name: view?.getCategory() ?? "", number: view?.getNumber() ?? "")
+            let costAdd = interactor?.addCostsCategory(category: category ?? "", name: view?.getCategory() ?? "", number: view?.getNumber() ?? "") ?? true
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "costAdd"), object: nil)
-            router?.showCostsCategoryView()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "incomeAdd"), object: nil)
+            router?.showCostsCategoryView(costAdd)
         }
     }
 }

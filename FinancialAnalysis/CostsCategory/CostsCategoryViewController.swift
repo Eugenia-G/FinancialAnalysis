@@ -13,17 +13,14 @@ final class CostsCategoryViewController: UIViewController {
     public var presenter: CostsCategoryPresenterInput?
     
     private let tableView = UITableView()
-    private let addCostButton = UIButton()
-    private let incomeLabel = UILabel()
     private let incomeInfoLabel = UILabel()
-    private let addIncomeButton = UIButton()
     
     private var balance: Double {
         presenter?.getIncome() ?? 0
     }
     
     private var costs: [CostsCategory] {
-        presenter?.getCostsCategory() ?? []
+        (presenter?.getCostsCategory() ?? []).sorted(by: { $0.costsDate > $1.costsDate })
     }
     
     private var costsKeys: [String] {
@@ -61,6 +58,12 @@ final class CostsCategoryViewController: UIViewController {
             name: NSNotification.Name(rawValue: "incomeAdd"),
             object: nil)
         
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(showMassageCostDidntAdd),
+            name: NSNotification.Name(rawValue: "costDidntAdd"),
+            object: nil)
+        
     }
     
     @objc func updateTable() {
@@ -70,13 +73,29 @@ final class CostsCategoryViewController: UIViewController {
     @objc func updateIncome() {
         incomeInfoLabel.text = "\(balance) ₽"
     }
+            
+    @objc func showMassageCostDidntAdd() {
+        presenter?.showAlert(title: "Ваши расходы превышают доходы", subtitle: "Добавьте доход и повторите попытку", action: ["Ок": { Void in }])
+    }
         
 }
 
 private extension CostsCategoryViewController {
     func setupUI() {
+        let addCostButton = UIButton()
+        let graphButton = UIButton()
+        let incomeLabel = UILabel()
+        let addIncomeButton = UIButton()
+        let forWhatLabel = UILabel()
+        let whenLabel = UILabel()
+        let howManyLabel = UILabel()
+        
+        view.addSubview(forWhatLabel)
+        view.addSubview(whenLabel)
+        view.addSubview(howManyLabel)
         view.addSubview(tableView)
         view.addSubview(addCostButton)
+        view.addSubview(graphButton)
         view.addSubview(incomeLabel)
         view.addSubview(incomeInfoLabel)
         view.addSubview(addIncomeButton)
@@ -116,9 +135,52 @@ private extension CostsCategoryViewController {
             make.left.right.equalToSuperview().inset(16)
             make.height.equalTo(48)
         }
+        
+        graphButton.setTitle("График платежей", for: .normal)
+        graphButton.layer.cornerRadius = 24
+        graphButton.backgroundColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
+        graphButton.tintColor = .white
+        graphButton.addTarget(self, action: #selector(addGraphButtonClick), for: .touchUpInside)
+        
+        graphButton.snp.makeConstraints { make in
+            make.top.equalTo(incomeLabel.snp.bottom).offset(20)
+            make.left.right.equalToSuperview().inset(16)
+            make.height.equalTo(48)
+        }
+        
+        forWhatLabel.text = "На что"
+        forWhatLabel.textColor = .systemGray
+        forWhatLabel.font = UIFont(name: "Arial", size: 16)
+        forWhatLabel.textAlignment = .left
+        forWhatLabel.snp.makeConstraints { make in
+            make.top.equalTo(graphButton.snp.bottom).offset(20)
+            make.left.equalToSuperview().inset(16)
+            make.width.equalTo((view.bounds.width - 32) / 3)
+        }
+        
+        whenLabel.text = "Когда"
+        whenLabel.textColor = .systemGray
+        whenLabel.font = UIFont(name: "Arial", size: 16)
+        whenLabel.textAlignment = .center
+        whenLabel.snp.makeConstraints { make in
+            make.top.equalTo(graphButton.snp.bottom).offset(20)
+            make.left.equalTo(forWhatLabel.snp.right)
+            make.width.equalTo((view.bounds.width - 32) / 3)
+        }
+        
+        howManyLabel.text = "Сколько"
+        howManyLabel.textColor = .systemGray
+        howManyLabel.font = UIFont(name: "Arial", size: 16)
+        howManyLabel.textAlignment = .right
+        howManyLabel.snp.makeConstraints { make in
+            make.top.equalTo(graphButton.snp.bottom).offset(20)
+            make.right.equalToSuperview().inset(16)
+            make.width.equalTo((view.bounds.width - 32) / 3)
+        }
+        
 
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(150)
+            make.top.equalTo(forWhatLabel.snp.bottom).offset(5)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(addCostButton).inset(50)
         }
@@ -128,6 +190,10 @@ private extension CostsCategoryViewController {
     
     @objc func addCostButtonClick() {
         presenter?.add(navController: navigationController!, type: .cost)
+    }
+    
+    @objc func addGraphButtonClick() {
+       ///
     }
     
     @objc func addIncomeButtonClick() {
@@ -145,6 +211,7 @@ extension CostsCategoryViewController: UITableViewDataSource, UITableViewDelegat
         
         cell.accessoryType = .none
         cell.isUserInteractionEnabled = false
+        cell.layer.borderColor = .init(red: 0.882, green: 0.871, blue: 0.871, alpha: 1)
         
         cell.contentView.addSubview(cell.nameLabel)
         cell.nameLabel.text = costsKeys[indexPath.row]
@@ -175,7 +242,7 @@ extension CostsCategoryViewController: UITableViewDataSource, UITableViewDelegat
             }
         
         cell.contentView.addSubview(cell.costLabel)
-        cell.costLabel.text = costsName[indexPath.row]
+        cell.costLabel.text = costsName[indexPath.row] + " ₽"
         cell.costLabel.numberOfLines = 0
         cell.costLabel.font = UIFont(name: "SFProDisplay-Medium", size: 16)
         cell.costLabel.textColor = .black

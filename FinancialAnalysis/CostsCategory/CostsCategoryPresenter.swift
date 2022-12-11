@@ -40,4 +40,8 @@ class CostsCategoryPresenter: CostsCategoryPresenterInput {
         interactor?.deleteCost(at: index)
     }
     
+    func showAlert(title: String, subtitle: String, action: [String : (UIAlertAction) -> Void]) {
+        router?.showAlert(title: title, subtitle: subtitle, action: action)
+    }
+    
 }

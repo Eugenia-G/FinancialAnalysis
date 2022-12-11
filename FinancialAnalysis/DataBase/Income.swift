@@ -10,4 +10,5 @@ import RealmSwift
 
 public class Income: Object {
     @objc dynamic var income: Double = 0
+    @objc dynamic var incomeDate: String = ""
 }
