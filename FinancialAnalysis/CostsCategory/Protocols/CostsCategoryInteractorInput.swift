@@ -10,6 +10,6 @@ import Foundation
 protocol CostsCategoryInteractorInput {
     func getIncome() -> Double
     func getCostsCategory(_ category: String) -> [CostsCategory]
-    func deleteCost(at index : Int)
+    func deleteCost(at index : Int, for category: String)
 }
 

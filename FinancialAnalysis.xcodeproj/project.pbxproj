@@ -27,9 +27,19 @@
 		6235A3532916A04500717C28 /* AddInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235A3522916A04500717C28 /* AddInteractorOutput.swift */; };
 		6235A3552916A05F00717C28 /* AddPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235A3542916A05F00717C28 /* AddPresenterInput.swift */; };
 		6235A3572916A07200717C28 /* AddPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235A3562916A07200717C28 /* AddPresenterOutput.swift */; };
-		6235A35B2916AA0800717C28 /* AddRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6235A35A2916AA0800717C28 /* AddRouter.swift */; };
+		623808A4294B0A2A0094890D /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623808A3294B0A2A0094890D /* LineChart.swift */; };
 		6247858D29199D82004A74DA /* AddType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6247858C29199D82004A74DA /* AddType.swift */; };
 		6247858F29199EC6004A74DA /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6247858E29199EC6004A74DA /* Income.swift */; };
+		62562A09294793AE00BBCFA3 /* GraphPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62562A08294793AE00BBCFA3 /* GraphPresenter.swift */; };
+		62562A0B294793BB00BBCFA3 /* GraphInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62562A0A294793BB00BBCFA3 /* GraphInteractor.swift */; };
+		62562A0D294793C800BBCFA3 /* GraphRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62562A0C294793C800BBCFA3 /* GraphRouter.swift */; };
+		62562A0F294793D600BBCFA3 /* GraphPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62562A0E294793D600BBCFA3 /* GraphPresenterInput.swift */; };
+		62562A11294793E200BBCFA3 /* GraphPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62562A10294793E200BBCFA3 /* GraphPresenterOutput.swift */; };
+		62562A13294793F700BBCFA3 /* GraphInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62562A12294793F700BBCFA3 /* GraphInteractorInput.swift */; };
+		62562A152947940000BBCFA3 /* GraphInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62562A142947940000BBCFA3 /* GraphInteractorOutput.swift */; };
+		62562A172947940A00BBCFA3 /* GraphRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62562A162947940A00BBCFA3 /* GraphRouterInput.swift */; };
+		62562A192947941500BBCFA3 /* GraphRouterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62562A182947941500BBCFA3 /* GraphRouterOutput.swift */; };
+		62562A1B294794E400BBCFA3 /* GraphType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62562A1A294794E400BBCFA3 /* GraphType.swift */; };
 		6260739728F1D36A00545484 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6260739628F1D36A00545484 /* AppDelegate.swift */; };
 		6260739E28F1D36A00545484 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6260739C28F1D36A00545484 /* Main.storyboard */; };
 		626073A128F1D36A00545484 /* FinancialAnalysis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6260739F28F1D36A00545484 /* FinancialAnalysis.xcdatamodeld */; };
@@ -44,6 +54,8 @@
 		626073EC28F1E67C00545484 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 626073EB28F1E67C00545484 /* SnapKit */; };
 		626073EE28F1E90200545484 /* CostsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626073ED28F1E90200545484 /* CostsTableCell.swift */; };
 		626449FA294129CD004212B3 /* ConvertDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626449F9294129CD004212B3 /* ConvertDate.swift */; };
+		626997BC29814A5C00156D07 /* AddRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626997BB29814A5C00156D07 /* AddRouter.swift */; };
+		626FF0B529634C8F00E0C4F8 /* CostsIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626FF0B429634C8F00E0C4F8 /* CostsIncome.swift */; };
 		62D013EF28F2D3CC00517266 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D013EE28F2D3CC00517266 /* AddViewController.swift */; };
 		62FCFF902933F4D4007E0C6D /* CostsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFF8F2933F4D4007E0C6D /* CostsCategory.swift */; };
 		62FCFF932933F5CF007E0C6D /* CostsCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FCFF922933F5CF007E0C6D /* CostsCategoryViewController.swift */; };
@@ -95,9 +107,19 @@
 		6235A3522916A04500717C28 /* AddInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInteractorOutput.swift; sourceTree = "<group>"; };
 		6235A3542916A05F00717C28 /* AddPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresenterInput.swift; sourceTree = "<group>"; };
 		6235A3562916A07200717C28 /* AddPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresenterOutput.swift; sourceTree = "<group>"; };
-		6235A35A2916AA0800717C28 /* AddRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddRouter.swift; path = ../../../../../.Trash/AddRouter.swift; sourceTree = "<group>"; };
+		623808A3294B0A2A0094890D /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		6247858C29199D82004A74DA /* AddType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddType.swift; sourceTree = "<group>"; };
 		6247858E29199EC6004A74DA /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
+		62562A08294793AE00BBCFA3 /* GraphPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPresenter.swift; sourceTree = "<group>"; };
+		62562A0A294793BB00BBCFA3 /* GraphInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphInteractor.swift; sourceTree = "<group>"; };
+		62562A0C294793C800BBCFA3 /* GraphRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRouter.swift; sourceTree = "<group>"; };
+		62562A0E294793D600BBCFA3 /* GraphPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPresenterInput.swift; sourceTree = "<group>"; };
+		62562A10294793E200BBCFA3 /* GraphPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPresenterOutput.swift; sourceTree = "<group>"; };
+		62562A12294793F700BBCFA3 /* GraphInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphInteractorInput.swift; sourceTree = "<group>"; };
+		62562A142947940000BBCFA3 /* GraphInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphInteractorOutput.swift; sourceTree = "<group>"; };
+		62562A162947940A00BBCFA3 /* GraphRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRouterInput.swift; sourceTree = "<group>"; };
+		62562A182947941500BBCFA3 /* GraphRouterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRouterOutput.swift; sourceTree = "<group>"; };
+		62562A1A294794E400BBCFA3 /* GraphType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphType.swift; sourceTree = "<group>"; };
 		6260739328F1D36A00545484 /* FinancialAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinancialAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6260739628F1D36A00545484 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6260739D28F1D36A00545484 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -115,6 +137,8 @@
 		626073E528F1E0C400545484 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		626073ED28F1E90200545484 /* CostsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsTableCell.swift; sourceTree = "<group>"; };
 		626449F9294129CD004212B3 /* ConvertDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertDate.swift; sourceTree = "<group>"; };
+		626997BB29814A5C00156D07 /* AddRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouter.swift; sourceTree = "<group>"; };
+		626FF0B429634C8F00E0C4F8 /* CostsIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsIncome.swift; sourceTree = "<group>"; };
 		62D013EE28F2D3CC00517266 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		62FCFF8F2933F4D4007E0C6D /* CostsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategory.swift; sourceTree = "<group>"; };
 		62FCFF922933F5CF007E0C6D /* CostsCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostsCategoryViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +188,7 @@
 				6235A33929168A5C00717C28 /* CostsCategories.swift */,
 				6247858E29199EC6004A74DA /* Income.swift */,
 				62FCFF8F2933F4D4007E0C6D /* CostsCategory.swift */,
+				626FF0B429634C8F00E0C4F8 /* CostsIncome.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -199,8 +224,23 @@
 			children = (
 				6247858C29199D82004A74DA /* AddType.swift */,
 				626449F9294129CD004212B3 /* ConvertDate.swift */,
+				62562A1A294794E400BBCFA3 /* GraphType.swift */,
+				623808A3294B0A2A0094890D /* LineChart.swift */,
 			);
 			path = SupportElements;
+			sourceTree = "<group>";
+		};
+		62562A072947939900BBCFA3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				62562A0E294793D600BBCFA3 /* GraphPresenterInput.swift */,
+				62562A10294793E200BBCFA3 /* GraphPresenterOutput.swift */,
+				62562A12294793F700BBCFA3 /* GraphInteractorInput.swift */,
+				62562A142947940000BBCFA3 /* GraphInteractorOutput.swift */,
+				62562A162947940A00BBCFA3 /* GraphRouterInput.swift */,
+				62562A182947941500BBCFA3 /* GraphRouterOutput.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		6260738A28F1D36A00545484 = {
@@ -211,6 +251,7 @@
 				626073AF28F1D36A00545484 /* FinancialAnalysisTests */,
 				626073B928F1D36A00545484 /* FinancialAnalysisUITests */,
 				6260739428F1D36A00545484 /* Products */,
+				62632CAD294A5DD200CF31DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -265,8 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				6235A33C29169EB100717C28 /* Protocols */,
-				626073CC28F1D99100545484 /* CostsViewController.swift */,
 				626073ED28F1E90200545484 /* CostsTableCell.swift */,
+				626073CC28F1D99100545484 /* CostsViewController.swift */,
 				62007403291294C600B22D0C /* CostsPresenter.swift */,
 				62007405291294D300B22D0C /* CostsInteractor.swift */,
 				62007407291294DC00B22D0C /* CostsRouter.swift */,
@@ -277,7 +318,11 @@
 		626073CA28F1D97800545484 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
+				62562A072947939900BBCFA3 /* Protocols */,
 				626073D428F1D9BD00545484 /* GraphViewController.swift */,
+				62562A08294793AE00BBCFA3 /* GraphPresenter.swift */,
+				62562A0A294793BB00BBCFA3 /* GraphInteractor.swift */,
+				62562A0C294793C800BBCFA3 /* GraphRouter.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -297,6 +342,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		62632CAD294A5DD200CF31DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		62D013F028F2D60E00517266 /* TextFieldForAdd */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,7 +356,7 @@
 				62D013EE28F2D3CC00517266 /* AddViewController.swift */,
 				620073FD2912933900B22D0C /* AddPresenter.swift */,
 				620073FF2912934200B22D0C /* AddInteractor.swift */,
-				6235A35A2916AA0800717C28 /* AddRouter.swift */,
+				626997BB29814A5C00156D07 /* AddRouter.swift */,
 			);
 			path = TextFieldForAdd;
 			sourceTree = "<group>";
@@ -479,22 +531,27 @@
 				6235A3572916A07200717C28 /* AddPresenterOutput.swift in Sources */,
 				6235A34229169F2D00717C28 /* CostsInteractorInput.swift in Sources */,
 				6235A34029169F0E00717C28 /* CostsRouterOutput.swift in Sources */,
+				626997BC29814A5C00156D07 /* AddRouter.swift in Sources */,
 				6235A34829169F7900717C28 /* CostsPresenterOutput.swift in Sources */,
 				62FCFF932933F5CF007E0C6D /* CostsCategoryViewController.swift in Sources */,
+				62562A0F294793D600BBCFA3 /* GraphPresenterInput.swift in Sources */,
 				6235A34629169F6200717C28 /* CostsPresenterInput.swift in Sources */,
 				62FCFFA22933F633007E0C6D /* CostsCategoryPresenterOutput.swift in Sources */,
 				626073EE28F1E90200545484 /* CostsTableCell.swift in Sources */,
 				62FCFFA82933F89B007E0C6D /* CostsCategoryTableCell.swift in Sources */,
 				6260739728F1D36A00545484 /* AppDelegate.swift in Sources */,
+				62562A11294793E200BBCFA3 /* GraphPresenterOutput.swift in Sources */,
+				62562A0D294793C800BBCFA3 /* GraphRouter.swift in Sources */,
 				6235A34429169F4300717C28 /* CostsInteractorOutput.swift in Sources */,
 				62007406291294D300B22D0C /* CostsInteractor.swift in Sources */,
 				6235A3532916A04500717C28 /* AddInteractorOutput.swift in Sources */,
 				626073E628F1E0C400545484 /* NavigationController.swift in Sources */,
 				6247858D29199D82004A74DA /* AddType.swift in Sources */,
 				6235A34F2916A01C00717C28 /* AddRouterOutput.swift in Sources */,
+				62562A0B294793BB00BBCFA3 /* GraphInteractor.swift in Sources */,
+				62562A1B294794E400BBCFA3 /* GraphType.swift in Sources */,
 				6247858F29199EC6004A74DA /* Income.swift in Sources */,
 				62D013EF28F2D3CC00517266 /* AddViewController.swift in Sources */,
-				6235A35B2916AA0800717C28 /* AddRouter.swift in Sources */,
 				62FCFF902933F4D4007E0C6D /* CostsCategory.swift in Sources */,
 				6235A33A29168A5C00717C28 /* CostsCategories.swift in Sources */,
 				62007404291294C600B22D0C /* CostsPresenter.swift in Sources */,
@@ -505,17 +562,24 @@
 				6235A3552916A05F00717C28 /* AddPresenterInput.swift in Sources */,
 				62FCFF952933F5DB007E0C6D /* CostsCategoryPresenter.swift in Sources */,
 				62007408291294DC00B22D0C /* CostsRouter.swift in Sources */,
+				62562A192947941500BBCFA3 /* GraphRouterOutput.swift in Sources */,
 				620074002912934200B22D0C /* AddInteractor.swift in Sources */,
 				62FCFFA42933F642007E0C6D /* CostsCategoryInteractorInput.swift in Sources */,
+				626FF0B529634C8F00E0C4F8 /* CostsIncome.swift in Sources */,
+				62562A152947940000BBCFA3 /* GraphInteractorOutput.swift in Sources */,
 				62FCFFA62933F650007E0C6D /* CostsCategoryInteractorOutput.swift in Sources */,
+				62562A09294793AE00BBCFA3 /* GraphPresenter.swift in Sources */,
 				626073A128F1D36A00545484 /* FinancialAnalysis.xcdatamodeld in Sources */,
+				62562A172947940A00BBCFA3 /* GraphRouterInput.swift in Sources */,
 				626449FA294129CD004212B3 /* ConvertDate.swift in Sources */,
+				623808A4294B0A2A0094890D /* LineChart.swift in Sources */,
 				6235A34B29169FC100717C28 /* AddRouterInput.swift in Sources */,
 				62FCFF972933F5E7007E0C6D /* CostsCategoryInteractor.swift in Sources */,
 				620073FE2912933900B22D0C /* AddPresenter.swift in Sources */,
 				62FCFF9E2933F61F007E0C6D /* CostsCategoryRouterOutput.swift in Sources */,
 				62FCFFA02933F62A007E0C6D /* CostsCategoryPresenterInput.swift in Sources */,
 				626073CD28F1D99100545484 /* CostsViewController.swift in Sources */,
+				62562A13294793F700BBCFA3 /* GraphInteractorInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,6 +756,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = G3X24TP6DR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinancialAnalysis/Info.plist;
@@ -720,6 +785,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = G3X24TP6DR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinancialAnalysis/Info.plist;

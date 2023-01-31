@@ -50,14 +50,6 @@ final class CostsViewController: UIViewController, UITextFieldDelegate {
             name: NSNotification.Name(rawValue: "incomeAdd"),
             object: nil)
     }
-    
-    @objc func updateTable() {
-        tableView.reloadData()
-    }
-    
-    @objc func updateIncome() {
-        incomeInfoLabel.text = "\(balance) ₽"
-    }
 
 }
 
@@ -113,13 +105,23 @@ private extension CostsViewController {
         
         tableView.register(CostsTableCell.self, forCellReuseIdentifier: "CostsTableCell")
     }
-    
+}
+
+extension CostsViewController {
     @objc func addCategoryButtonClick() {
         presenter?.add(navController: navigationController!, type: .category)
     }
     
     @objc func addIncomeButtonClick() {
         presenter?.add(navController: navigationController!, type: .income)
+    }
+    
+    @objc func updateTable() {
+        tableView.reloadData()
+    }
+    
+    @objc func updateIncome() {
+        incomeInfoLabel.text = "\(balance) ₽"
     }
 }
 

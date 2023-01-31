@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var tabBarController = UITabBarController()
     var CostsNavigationController = UINavigationController()
-    var GraphNavigationController = UINavigationController(rootViewController: GraphViewController())
+    var GraphNavigationController = UINavigationController()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -23,17 +23,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         // установка элементов модуля главного экрана
-        let interactor = CostsInteractor()
-        let presenter = CostsPresenter()
-        let router = CostsRouter()
+        let interactorCosts = CostsInteractor()
+        let presenterCosts = CostsPresenter()
+        let routerCosts = CostsRouter()
         
-        presenter.interactor = interactor
-        presenter.router = router
+        presenterCosts.interactor = interactorCosts
+        presenterCosts.router = routerCosts
         
-        let rootView = CostsViewController()
-        rootView.presenter = presenter
+        let rootViewCosts = CostsViewController()
+        rootViewCosts.presenter = presenterCosts
         
-        CostsNavigationController = UINavigationController(rootViewController: rootView)
+        CostsNavigationController = UINavigationController(rootViewController: rootViewCosts)
+        
+        let interactorGraph = GraphInteractor()
+        let presenterGraph = GraphPresenter()
+        let routerGraph = GraphRouter()
+        
+        presenterGraph.interactor = interactorGraph
+        presenterGraph.router = routerGraph
+        
+        let rootViewGraph = GraphViewController()
+        rootViewGraph.presenter = presenterGraph
+        
+        GraphNavigationController = UINavigationController(rootViewController: rootViewGraph)
         
         tabBarController.viewControllers = [CostsNavigationController, GraphNavigationController]
         

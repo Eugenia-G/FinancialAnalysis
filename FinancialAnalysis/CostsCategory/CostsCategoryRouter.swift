@@ -38,4 +38,18 @@ class CostsCategoryRouter: CostsCategoryRouterInput {
         }
         navigationController?.present(alert, animated: true)
     }
+    
+    func showGraphFlow(costs: [CostsCategory]) {
+        let interator = GraphInteractor()
+        let presenter = GraphPresenter(type: .costsCategory, costs: costs)
+        let view = GraphViewController()
+        let router = GraphRouter()
+
+        view.presenter = presenter
+        presenter.interactor = interator
+        presenter.router = router
+        presenter.view = view
+        
+        navigationController?.show(view, sender: nil)
+    }
 }

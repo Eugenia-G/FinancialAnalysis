@@ -14,23 +14,62 @@ final class CostsCategoryViewController: UIViewController {
     
     private let tableView = UITableView()
     private let incomeInfoLabel = UILabel()
+    private let graphButton = UIButton()
+    let forWhatLabel = UILabel()
+    let whenLabel = UILabel()
+    let howManyLabel = UILabel()
     
     private var balance: Double {
         presenter?.getIncome() ?? 0
     }
     
     private var costs: [CostsCategory] {
-        (presenter?.getCostsCategory() ?? []).sorted(by: { $0.costsDate > $1.costsDate })
+        get {
+            (self.presenter?.getCostsCategory() ?? []).sorted(by: { $0.costsDate > $1.costsDate })
+        }
+        set {
+            tableView.reloadData()
+        }
     }
     
     private var costsKeys: [String] {
-        self.costs.map({$0.costsName})
+        get {
+            self.costs.map({$0.costsName})
+        }
+        set {
+        }
     }
     private var costsName: [String] {
-        self.costs.map({$0.costsNumber})
+        get {
+            self.costs.map({$0.costsNumber})
+        }
+        set {
+        }
     }
     private var costsDate: [String] {
-        self.costs.map({$0.costsDate})
+        get {
+            self.costs.map({$0.costsDate})
+        }
+        set {
+        }
+    }
+    private var costsDays: Int {
+        var key = costsDate.first
+        var keys: [String] = []
+        for (index, element) in costsDate.enumerated() {
+            if element != key  {
+                keys.append(key ?? "")
+                key = element
+                
+                if index == costsDate.count - 1 {
+                    keys.append(key ?? "")
+                }
+            }
+        }
+        if keys.filter({ $0 == key }).isEmpty {
+            keys.append(key ?? "")
+        }
+        return keys.count
     }
     
     override func viewDidLoad() {
@@ -38,12 +77,29 @@ final class CostsCategoryViewController: UIViewController {
         
         view.backgroundColor = .white
         navigationItem.setTitle(title: presenter?.category ?? "", subtitle: "")
+        navigationItem.backButtonTitle = ""
         
         tableView.dataSource = self
         tableView.delegate = self
         
         setupUI()
         presenter?.start()
+        
+        if costsDays > 1 {
+            graphButton.isHidden = false
+        } else {
+            graphButton.isHidden = true
+        }
+        
+        if costs.isEmpty {
+            forWhatLabel.isHidden = true
+            whenLabel.isHidden = true
+            howManyLabel.isHidden = true
+        } else {
+            forWhatLabel.isHidden = false
+            whenLabel.isHidden = false
+            howManyLabel.isHidden = false
+        }
         
         
         NotificationCenter.default.addObserver(
@@ -65,30 +121,13 @@ final class CostsCategoryViewController: UIViewController {
             object: nil)
         
     }
-    
-    @objc func updateTable() {
-        tableView.reloadData()
-    }
-    
-    @objc func updateIncome() {
-        incomeInfoLabel.text = "\(balance) ₽"
-    }
-            
-    @objc func showMassageCostDidntAdd() {
-        presenter?.showAlert(title: "Ваши расходы превышают доходы", subtitle: "Добавьте доход и повторите попытку", action: ["Ок": { Void in }])
-    }
-        
 }
 
 private extension CostsCategoryViewController {
     func setupUI() {
         let addCostButton = UIButton()
-        let graphButton = UIButton()
         let incomeLabel = UILabel()
         let addIncomeButton = UIButton()
-        let forWhatLabel = UILabel()
-        let whenLabel = UILabel()
-        let howManyLabel = UILabel()
         
         view.addSubview(forWhatLabel)
         view.addSubview(whenLabel)
@@ -187,17 +226,40 @@ private extension CostsCategoryViewController {
         
         tableView.register(CostsCategoryTableCell.self, forCellReuseIdentifier: "CostsCategoryTableCell")
     }
-    
+}
+
+extension CostsCategoryViewController {
     @objc func addCostButtonClick() {
         presenter?.add(navController: navigationController!, type: .cost)
     }
     
     @objc func addGraphButtonClick() {
-       ///
+        presenter?.graphButtonDidTap(costs: costs)
     }
     
     @objc func addIncomeButtonClick() {
         presenter?.add(navController: navigationController!, type: .income)
+    }
+    
+    @objc func updateTable() {
+        tableView.reloadData()
+        forWhatLabel.isHidden = false
+        whenLabel.isHidden = false
+        howManyLabel.isHidden = false
+        
+        if costsDays > 1 {
+            graphButton.isHidden = false
+        } else {
+            graphButton.isHidden = true
+        }
+    }
+    
+    @objc func updateIncome() {
+        incomeInfoLabel.text = "\(balance) ₽"
+    }
+            
+    @objc func showMassageCostDidntAdd() {
+        presenter?.showAlert(title: "Ваши расходы превышают доходы", subtitle: "Добавьте доход и повторите попытку", action: ["Ок": { Void in }])
     }
 }
 
@@ -262,8 +324,8 @@ extension CostsCategoryViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             presenter?.deleteCost(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.reloadData()
         }
     }
 }

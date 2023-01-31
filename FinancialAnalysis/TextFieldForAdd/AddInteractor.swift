@@ -22,19 +22,25 @@ class AddInteractor: AddInteractorInput {
     
     func addIncome(_ inc: Double) {
         try! realm.write{
-            let lastIncome = Array(realm.objects(Income.self)).last?.income
             let income = Income()
-            income.income = (lastIncome ?? 0) + inc
+            income.income = inc
             income.incomeDate = Date().rusFormatter
             realm.add(income)
+        }
+        
+        let lastCostsIncome = Array(self.realm.objects(CostsIncome.self)).last?.costsIncome
+        let costsIncome = CostsIncome()
+        costsIncome.costsIncome = (lastCostsIncome ?? 0) + inc
+        try! realm.write{
+            realm.add(costsIncome)
         }
     }
     
     func addCostsCategory(category: String, name: String, number: String) -> Bool {
-            let lastIncome = Array(self.realm.objects(Income.self)).last?.income
-            let income = Income()
-            income.income = (lastIncome ?? 0) - (Double(number) ?? 0)
-            if income.income >= 0 {
+            let lastIncome = Array(self.realm.objects(CostsIncome.self)).last?.costsIncome
+            let income = CostsIncome()
+            income.costsIncome = (lastIncome ?? 0) - (Double(number) ?? 0)
+            if income.costsIncome >= 0 {
                 try! realm.write{
                     realm.add(income)
                 }

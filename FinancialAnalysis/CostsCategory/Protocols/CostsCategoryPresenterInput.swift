@@ -17,4 +17,5 @@ protocol CostsCategoryPresenterInput {
     func getCostsCategory() -> [CostsCategory]
     func deleteCost(at index: Int)
     func showAlert(title: String, subtitle: String, action: [String : (UIAlertAction) -> Void])
+    func graphButtonDidTap(costs: [CostsCategory])
 }

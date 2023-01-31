@@ -19,3 +19,17 @@ public extension Date {
         return Formatter.date.string(from: self)
     }
 }
+
+public extension String {
+    var getDate: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        let date = dateFormatter.date(from: self) ?? Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour], from: date)
+        let finalDate = calendar.date(from: components)
+        
+        return finalDate ?? Date()
+    }
+}
