@@ -54,6 +54,16 @@ class GraphViewController: UIViewController {
         segmentControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         
         setupUI()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateView),
+            name: NSNotification.Name(rawValue: "changedBD"),
+            object: nil)
+    }
+    
+    @objc func updateView() {
+        setView()
     }
 
 }

@@ -19,6 +19,8 @@ final class CostsCategoryViewController: UIViewController {
     let whenLabel = UILabel()
     let howManyLabel = UILabel()
     
+    private let emptyLabel = UILabel()
+    
     private var balance: Double {
         presenter?.getIncome() ?? 0
     }
@@ -95,10 +97,12 @@ final class CostsCategoryViewController: UIViewController {
             forWhatLabel.isHidden = true
             whenLabel.isHidden = true
             howManyLabel.isHidden = true
+            tableView.isHidden = true
         } else {
             forWhatLabel.isHidden = false
             whenLabel.isHidden = false
             howManyLabel.isHidden = false
+            emptyLabel.removeFromSuperview()
         }
         
         
@@ -225,6 +229,15 @@ private extension CostsCategoryViewController {
         }
         
         tableView.register(CostsCategoryTableCell.self, forCellReuseIdentifier: "CostsCategoryTableCell")
+        
+        view.addSubview(emptyLabel)
+        emptyLabel.text = "Вы ещё не добавили ни одного расхода"
+        emptyLabel.textAlignment = .center
+        emptyLabel.font = UIFont(name: "Arial", size: 16)
+        emptyLabel.textColor = .lightGray
+        emptyLabel.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+        }
     }
 }
 
@@ -251,6 +264,11 @@ extension CostsCategoryViewController {
             graphButton.isHidden = false
         } else {
             graphButton.isHidden = true
+        }
+        
+        if costs.count == 1 {
+            tableView.isHidden = false
+            emptyLabel.removeFromSuperview()
         }
     }
     
@@ -326,6 +344,7 @@ extension CostsCategoryViewController: UITableViewDataSource, UITableViewDelegat
             presenter?.deleteCost(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView.reloadData()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "changedBD"), object: nil)
         }
     }
 }

@@ -18,6 +18,8 @@ final class CostsViewController: UIViewController, UITextFieldDelegate {
     private let incomeInfoLabel = UILabel()
     private let addIncomeButton = UIButton()
     
+    private let emptyLabel = UILabel()
+    
     private var category: [String] {
         presenter?.getCategories() ?? []
     }
@@ -35,6 +37,12 @@ final class CostsViewController: UIViewController, UITextFieldDelegate {
         tableView.delegate = self
         
         setupUI()
+        
+        if category.count > 0 {
+            emptyLabel.removeFromSuperview()
+        } else {
+            tableView.isHidden = true
+        }
         
         presenter?.start()
         
@@ -104,6 +112,15 @@ private extension CostsViewController {
         }
         
         tableView.register(CostsTableCell.self, forCellReuseIdentifier: "CostsTableCell")
+        
+        view.addSubview(emptyLabel)
+        emptyLabel.text = "Вы ещё не добавили ни одной категории"
+        emptyLabel.textAlignment = .center
+        emptyLabel.font = UIFont(name: "Arial", size: 16)
+        emptyLabel.textColor = .lightGray
+        emptyLabel.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+        }
     }
 }
 
@@ -118,6 +135,10 @@ extension CostsViewController {
     
     @objc func updateTable() {
         tableView.reloadData()
+        if category.count == 1 {
+            tableView.isHidden = false
+            emptyLabel.removeFromSuperview()
+        }
     }
     
     @objc func updateIncome() {
@@ -155,6 +176,7 @@ extension CostsViewController: UITableViewDataSource, UITableViewDelegate {
             presenter?.deleteCategory(at: indexPath.row, for: category[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.reloadData()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "changedBD"), object: nil)
         }
     }
     
