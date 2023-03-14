@@ -146,14 +146,14 @@ private extension CostsCategoryViewController {
         incomeLabel.text = "Текущий баланс: "
         incomeLabel.font = UIFont(name: "Arial", size: 16)
         incomeLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(110)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(10)
             make.left.equalToSuperview().inset(16)
         }
         
         incomeInfoLabel.text = "\(balance) ₽"
         incomeInfoLabel.font = UIFont(name: "Arial", size: 16)
         incomeInfoLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(110)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(10)
             make.left.equalTo(incomeLabel.snp.right).offset(5)
         }
         
@@ -163,7 +163,7 @@ private extension CostsCategoryViewController {
         addIncomeButton.titleLabel?.font = UIFont(name: "Arial", size: 22)
         addIncomeButton.addTarget(self, action: #selector(addIncomeButtonClick), for: .touchUpInside)
         addIncomeButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(100)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.right.equalToSuperview().inset(10)
         }
         
@@ -174,7 +174,7 @@ private extension CostsCategoryViewController {
         addCostButton.addTarget(self, action: #selector(addCostButtonClick), for: .touchUpInside)
         
         addCostButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(145)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.left.right.equalToSuperview().inset(16)
             make.height.equalTo(48)
         }
@@ -225,7 +225,7 @@ private extension CostsCategoryViewController {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(forWhatLabel.snp.bottom).offset(5)
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(addCostButton).inset(50)
+            make.bottom.equalTo(addCostButton).inset(24)
         }
         
         tableView.register(CostsCategoryTableCell.self, forCellReuseIdentifier: "CostsCategoryTableCell")

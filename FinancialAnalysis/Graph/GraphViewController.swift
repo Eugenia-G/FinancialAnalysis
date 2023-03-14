@@ -112,7 +112,7 @@ private extension GraphViewController {
         
         view.addSubview(segmentControl)
         segmentControl.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(150)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
             make.height.equalTo(40)
             make.left.equalToSuperview().inset(48)
             make.right.equalToSuperview().inset(48)

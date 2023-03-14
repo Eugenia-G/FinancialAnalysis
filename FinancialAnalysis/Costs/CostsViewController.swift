@@ -72,14 +72,14 @@ private extension CostsViewController {
         incomeLabel.text = "Текущий баланс: "
         incomeLabel.font = UIFont(name: "Arial", size: 16)
         incomeLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(110)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(10)
             make.left.equalToSuperview().inset(16)
         }
         
         incomeInfoLabel.text = "\(balance) ₽"
         incomeInfoLabel.font = UIFont(name: "Arial", size: 16)
         incomeInfoLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(110)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(10)
             make.left.equalTo(incomeLabel.snp.right).offset(5)
         }
         
@@ -89,7 +89,7 @@ private extension CostsViewController {
         addIncomeButton.titleLabel?.font = UIFont(name: "Arial", size: 22)
         addIncomeButton.addTarget(self, action: #selector(addIncomeButtonClick), for: .touchUpInside)
         addIncomeButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(100)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.right.equalToSuperview().inset(10)
         }
         
@@ -100,15 +100,15 @@ private extension CostsViewController {
         addCategoryButton.addTarget(self, action: #selector(addCategoryButtonClick), for: .touchUpInside)
         
         addCategoryButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(145)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.left.right.equalToSuperview().inset(16)
             make.height.equalTo(48)
         }
 
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(150)
+            make.top.equalTo(incomeLabel.snp.bottom).offset(24)
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(addCategoryButton).inset(50)
+            make.bottom.equalTo(addCategoryButton).inset(24)
         }
         
         tableView.register(CostsTableCell.self, forCellReuseIdentifier: "CostsTableCell")
