@@ -19,7 +19,7 @@ extension AddType {
         case .category:
             return "Наименование"
         case .income:
-            return "Сумма"
+            return ""
         case .cost:
             return "Наименование расхода"
         }

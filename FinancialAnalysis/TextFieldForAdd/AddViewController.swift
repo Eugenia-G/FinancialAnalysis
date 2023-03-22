@@ -16,7 +16,8 @@ final class AddViewController: UIViewController {
     private let categoryTextField = UITextField()
     private let numberTextField = UITextField()
     private let addButton = UIButton()
-    private let separatorView = UIView()
+    private let separatorCategoryView = UIView()
+    private let separatorNumberView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ final class AddViewController: UIViewController {
     }
     
     func getIncome() -> Double {
-        return NumberFormatter().number(from: categoryTextField.text ?? "0")?.doubleValue ?? 0
+        return NumberFormatter().number(from: numberTextField.text ?? "0")?.doubleValue ?? 0
     }
     
     func getNumber() -> String{
@@ -59,30 +60,45 @@ private extension AddViewController {
             make.width.equalToSuperview()
         }
         
-        addView.addSubview(categoryTextField)
-        categoryTextField.backgroundColor = .white
-        categoryTextField.clearButtonMode = .always
-        categoryTextField.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview().inset(16)
-            make.height.equalTo(64)
+        if presenter?.addType != .income {
+            addView.addSubview(categoryTextField)
+            categoryTextField.backgroundColor = .white
+            categoryTextField.clearButtonMode = .always
+            categoryTextField.snp.makeConstraints { make in
+                make.top.left.right.equalToSuperview().inset(16)
+                make.height.equalTo(64)
+            }
+            
+            addView.addSubview(separatorCategoryView)
+            separatorCategoryView.backgroundColor = .systemGray4
+            separatorCategoryView.snp.makeConstraints { make in
+                make.top.equalTo(categoryTextField.snp.bottom).inset(1)
+                make.right.left.equalToSuperview().inset(16)
+                make.height.equalTo(0.5)
+            }
         }
         
-        addView.addSubview(separatorView)
-        separatorView.backgroundColor = UIColor(red: 0.62, green: 0.62, blue: 0.62, alpha: 1)
-        separatorView.snp.makeConstraints { make in
-            make.top.equalTo(categoryTextField.snp.bottom)
-            make.right.left.equalToSuperview().inset(16)
-            make.height.equalTo(0.5)
-        }
-        
-        if presenter?.addType == .cost {
+        if presenter?.addType == .cost || presenter?.addType == .income {
             addView.addSubview(numberTextField)
             numberTextField.backgroundColor = .white
             numberTextField.clearButtonMode = .always
+            numberTextField.keyboardType = .decimalPad
             numberTextField.snp.makeConstraints { make in
-                make.top.equalTo(separatorView)
+                if presenter?.addType == .cost {
+                    make.top.equalTo(separatorCategoryView).inset(1)
+                } else {
+                    make.top.equalToSuperview()
+                }
                 make.left.right.equalToSuperview().inset(16)
                 make.height.equalTo(64)
+            }
+            
+            addView.addSubview(separatorNumberView)
+            separatorNumberView.backgroundColor = .systemGray4
+            separatorNumberView.snp.makeConstraints { make in
+                make.top.equalTo(numberTextField.snp.bottom).inset(1)
+                make.right.left.equalToSuperview().inset(16)
+                make.height.equalTo(0.5)
             }
         }
         
@@ -92,7 +108,7 @@ private extension AddViewController {
         addButton.addTarget(self, action: #selector(addCategoryButtonClick), for: .touchUpInside)
         addButton.snp.makeConstraints { make in
             make.right.left.equalToSuperview().inset(12)
-            if presenter?.addType == .cost {
+            if presenter?.addType == .cost || presenter?.addType == .income {
                 make.top.equalTo(numberTextField.snp.bottom).offset(21)
             } else {
                 make.top.equalTo(categoryTextField.snp.bottom).offset(21)
