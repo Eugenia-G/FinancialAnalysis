@@ -338,13 +338,4 @@ extension CostsCategoryViewController: UITableViewDataSource, UITableViewDelegat
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            presenter?.deleteCost(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.tableView.reloadData()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "changedBD"), object: nil)
-        }
-    }
 }

@@ -15,7 +15,6 @@ protocol CostsCategoryPresenterInput {
     func getIncome() -> Double
     func add(navController: UINavigationController, type: AddType)
     func getCostsCategory() -> [CostsCategory]
-    func deleteCost(at index: Int)
     func showAlert(title: String, subtitle: String, action: [String : (UIAlertAction) -> Void])
     func graphButtonDidTap(costs: [CostsCategory])
 }

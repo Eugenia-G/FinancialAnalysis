@@ -20,12 +20,4 @@ class CostsCategoryInteractor: CostsCategoryInteractorInput {
         let category = Array(realm.objects(CostsCategory.self)).filter({ $0.costCategory == category })
         return category
     }
-    
-    func deleteCost(at index : Int, for category: String) {
-        self.realm.beginWrite()
-        self.realm.delete(Array(realm.objects(CostsCategory.self)).filter({ $0.costCategory == category }).sorted(by: { $0.costsDate > $1.costsDate })[index])
-        do {
-            try! self.realm.commitWrite()
-        }
-    }
 }

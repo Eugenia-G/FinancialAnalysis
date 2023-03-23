@@ -36,10 +36,6 @@ class CostsCategoryPresenter: CostsCategoryPresenterInput {
         router?.showAddFlow(navController: navController, type: type, category: category)
     }
     
-    func deleteCost(at index: Int) {
-        interactor?.deleteCost(at: index, for: category)
-    }
-    
     func showAlert(title: String, subtitle: String, action: [String : (UIAlertAction) -> Void]) {
         router?.showAlert(title: title, subtitle: subtitle, action: action)
     }

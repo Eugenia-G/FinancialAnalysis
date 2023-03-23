@@ -21,7 +21,11 @@ final class AddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryTextField.becomeFirstResponder()
+        if presenter?.addType == .income {
+           numberTextField.becomeFirstResponder()
+        } else {
+            categoryTextField.becomeFirstResponder()
+        }
         setupUI()
         
         categoryTextField.placeholder = presenter?.addType.textFieldPlaceholder

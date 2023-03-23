@@ -29,10 +29,6 @@ class CostsPresenter: CostsPresenterInput {
         router?.showAddFlow(navController: navController, type: type)
     }
     
-    func deleteCategory(at index: Int, for category: String) {
-        interactor?.deleteCategory(at: index, for: category)
-    }
-    
     func openCostsCategory(navController: UINavigationController, category: String) {
         router?.showCostsCategoryFlow(navController: navController, category: category)
     }

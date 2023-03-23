@@ -171,15 +171,6 @@ extension CostsViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            presenter?.deleteCategory(at: indexPath.row, for: category[indexPath.row])
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "changedBD"), object: nil)
-        }
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.openCostsCategory(navController: navigationController!, category: category[indexPath.row])
         UIView.animate(withDuration: 0.2,  animations: {
